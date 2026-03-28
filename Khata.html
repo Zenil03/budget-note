@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>FinTrack — Smart Budget Tracker</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -248,262 +248,42 @@ canvas{max-height:215px;}
 <!-- AUTH SCREEN -->
 <div id="auth-screen">
   <div class="auth-left">
-    <div class="al-brand">
-      <div class="al-logo">Fin<span>Track</span></div>
-      <div class="al-tag">Your personal finance companion</div>
-    </div>
-    <div class="al-feats">
-      <div class="al-feat"><div class="al-feat-icon">📊</div><div class="al-feat-text"><strong>Visual Dashboards</strong><span>Monthly, weekly & yearly breakdowns</span></div></div>
-      <div class="al-feat"><div class="al-feat-icon">🌍</div><div class="al-feat-text"><strong>Any Currency</strong><span>50+ currencies — choose at signup</span></div></div>
-      <div class="al-feat"><div class="al-feat-icon">🔒</div><div class="al-feat-text"><strong>Private Per-User Data</strong><span>Each account is fully isolated</span></div></div>
-      <div class="al-feat"><div class="al-feat-icon">📅</div><div class="al-feat-text"><strong>Custom Date Ranges</strong><span>Filter any period you need</span></div></div>
-    </div>
-    <div class="al-quote">
-      <p>"FinTrack helped me cut my monthly expenses by 30% in just two months."</p>
-      <cite>— Aryan S., Ahmedabad</cite>
-    </div>
+    <div class="al-brand"><div class="al-logo">Fin<span>Track</span></div><div class="al-tag">Your personal finance companion</div></div>
+    <div class="al-feats"><div class="al-feat"><div class="al-feat-icon">📊</div><div class="al-feat-text"><strong>Visual Dashboards</strong><span>Monthly, weekly & yearly breakdowns</span></div></div><div class="al-feat"><div class="al-feat-icon">🌍</div><div class="al-feat-text"><strong>Any Currency</strong><span>50+ currencies — choose at signup</span></div></div><div class="al-feat"><div class="al-feat-icon">🔒</div><div class="al-feat-text"><strong>Private Per-User Data</strong><span>Each account is fully isolated</span></div></div><div class="al-feat"><div class="al-feat-icon">📅</div><div class="al-feat-text"><strong>Custom Date Ranges</strong><span>Filter any period you need</span></div></div></div>
+    <div class="al-quote"><p>"FinTrack helped me cut my monthly expenses by 30% in just two months."</p><cite>— Zenil Tailor</cite></div>
   </div>
   <div class="auth-right">
     <div class="au-uc">👥 <span id="uc-text">0 accounts</span></div>
-    <div class="au-tabs">
-      <button class="au-tab active" onclick="switchTab('login')">Sign In</button>
-      <button class="au-tab" onclick="switchTab('register')">Create Account</button>
-    </div>
-
-    <!-- LOGIN -->
-    <div class="au-form active" id="f-login">
-      <div class="au-form-title">Welcome back</div>
-      <div class="au-form-sub">Sign in to your FinTrack account</div>
-      <div class="aue" id="l-err"></div>
-      <div class="fi"><label>Username</label><input type="text" id="l-u" placeholder="your username" autocomplete="username"></div>
-      <div class="fi"><label>Password</label><input type="password" id="l-p" placeholder="your password" autocomplete="current-password"></div>
-      <button class="btn-auth" onclick="doLogin()">Sign In →</button>
-      <div class="au-div">or</div>
-      <div class="au-sw">No account? <a href="#" onclick="switchTab('register');return false;">Create one free</a></div>
-    </div>
-
-    <!-- REGISTER -->
-    <div class="au-form" id="f-reg">
-      <div class="au-form-title">Create account</div>
-      <div class="au-form-sub">Set up your personal finance tracker</div>
-      <div class="aue" id="r-err"></div>
-      <div class="fi-row">
-        <div class="fi"><label>First Name</label><input type="text" id="r-fn" placeholder="Aryan"></div>
-        <div class="fi"><label>Last Name</label><input type="text" id="r-ln" placeholder="Shah"></div>
-      </div>
-      <div class="fi">
-        <label>Username <span style="color:var(--crimson)">*</span></label>
-        <input type="text" id="r-u" placeholder="aryanshah99" autocomplete="username">
-        <div class="fi-hint">Unique login ID — letters, numbers, underscores only</div>
-      </div>
-      <div class="fi-row">
-        <div class="fi"><label>Password <span style="color:var(--crimson)">*</span></label><input type="password" id="r-p" placeholder="min 6 chars" autocomplete="new-password"></div>
-        <div class="fi"><label>Confirm Password <span style="color:var(--crimson)">*</span></label><input type="password" id="r-p2" placeholder="repeat"></div>
-      </div>
-      <div class="fi">
-        <label>Currency <span style="color:var(--crimson)">*</span></label>
-        <select id="r-cur" onchange="onCurChange()">
-          <option value="">— Select your currency —</option>
-          <optgroup label="🌏 Asia">
-            <option value="INR|₹|Indian Rupee">🇮🇳 INR — Indian Rupee (₹)</option>
-            <option value="PKR|₨|Pakistani Rupee">🇵🇰 PKR — Pakistani Rupee (₨)</option>
-            <option value="BDT|৳|Bangladeshi Taka">🇧🇩 BDT — Bangladeshi Taka (৳)</option>
-            <option value="LKR|Rs|Sri Lankan Rupee">🇱🇰 LKR — Sri Lankan Rupee (Rs)</option>
-            <option value="NPR|Rp|Nepali Rupee">🇳🇵 NPR — Nepali Rupee (Rp)</option>
-            <option value="CNY|¥|Chinese Yuan">🇨🇳 CNY — Chinese Yuan (¥)</option>
-            <option value="JPY|¥|Japanese Yen">🇯🇵 JPY — Japanese Yen (¥)</option>
-            <option value="KRW|₩|South Korean Won">🇰🇷 KRW — South Korean Won (₩)</option>
-            <option value="SGD|S$|Singapore Dollar">🇸🇬 SGD — Singapore Dollar (S$)</option>
-            <option value="MYR|RM|Malaysian Ringgit">🇲🇾 MYR — Malaysian Ringgit (RM)</option>
-            <option value="THB|฿|Thai Baht">🇹🇭 THB — Thai Baht (฿)</option>
-            <option value="IDR|Rp|Indonesian Rupiah">🇮🇩 IDR — Indonesian Rupiah (Rp)</option>
-            <option value="PHP|₱|Philippine Peso">🇵🇭 PHP — Philippine Peso (₱)</option>
-            <option value="VND|₫|Vietnamese Dong">🇻🇳 VND — Vietnamese Dong (₫)</option>
-            <option value="HKD|HK$|Hong Kong Dollar">🇭🇰 HKD — Hong Kong Dollar (HK$)</option>
-            <option value="TWD|NT$|Taiwan Dollar">🇹🇼 TWD — Taiwan Dollar (NT$)</option>
-            <option value="AED|د.إ|UAE Dirham">🇦🇪 AED — UAE Dirham (د.إ)</option>
-            <option value="SAR|﷼|Saudi Riyal">🇸🇦 SAR — Saudi Riyal (﷼)</option>
-            <option value="QAR|QR|Qatari Riyal">🇶🇦 QAR — Qatari Riyal (QR)</option>
-            <option value="KWD|KD|Kuwaiti Dinar">🇰🇼 KWD — Kuwaiti Dinar (KD)</option>
-            <option value="BHD|BD|Bahraini Dinar">🇧🇭 BHD — Bahraini Dinar (BD)</option>
-            <option value="OMR|OMR|Omani Rial">🇴🇲 OMR — Omani Rial (OMR)</option>
-            <option value="ILS|₪|Israeli Shekel">🇮🇱 ILS — Israeli Shekel (₪)</option>
-            <option value="TRY|₺|Turkish Lira">🇹🇷 TRY — Turkish Lira (₺)</option>
-          </optgroup>
-          <optgroup label="🌍 Africa">
-            <option value="ZAR|R|South African Rand">🇿🇦 ZAR — South African Rand (R)</option>
-            <option value="NGN|₦|Nigerian Naira">🇳🇬 NGN — Nigerian Naira (₦)</option>
-            <option value="KES|KSh|Kenyan Shilling">🇰🇪 KES — Kenyan Shilling (KSh)</option>
-            <option value="GHS|GH₵|Ghanaian Cedi">🇬🇭 GHS — Ghanaian Cedi (GH₵)</option>
-            <option value="EGP|E£|Egyptian Pound">🇪🇬 EGP — Egyptian Pound (E£)</option>
-          </optgroup>
-          <optgroup label="🌎 Americas">
-            <option value="USD|$|US Dollar">🇺🇸 USD — US Dollar ($)</option>
-            <option value="CAD|C$|Canadian Dollar">🇨🇦 CAD — Canadian Dollar (C$)</option>
-            <option value="MXN|MX$|Mexican Peso">🇲🇽 MXN — Mexican Peso (MX$)</option>
-            <option value="BRL|R$|Brazilian Real">🇧🇷 BRL — Brazilian Real (R$)</option>
-            <option value="ARS|AR$|Argentine Peso">🇦🇷 ARS — Argentine Peso (AR$)</option>
-            <option value="CLP|CL$|Chilean Peso">🇨🇱 CLP — Chilean Peso (CL$)</option>
-            <option value="COP|CO$|Colombian Peso">🇨🇴 COP — Colombian Peso (CO$)</option>
-          </optgroup>
-          <optgroup label="🌍 Europe">
-            <option value="EUR|€|Euro">🇪🇺 EUR — Euro (€)</option>
-            <option value="GBP|£|British Pound">🇬🇧 GBP — British Pound (£)</option>
-            <option value="CHF|Fr|Swiss Franc">🇨🇭 CHF — Swiss Franc (Fr)</option>
-            <option value="SEK|kr|Swedish Krona">🇸🇪 SEK — Swedish Krona (kr)</option>
-            <option value="NOK|kr|Norwegian Krone">🇳🇴 NOK — Norwegian Krone (kr)</option>
-            <option value="DKK|kr|Danish Krone">🇩🇰 DKK — Danish Krone (kr)</option>
-            <option value="PLN|zł|Polish Złoty">🇵🇱 PLN — Polish Złoty (zł)</option>
-            <option value="HUF|Ft|Hungarian Forint">🇭🇺 HUF — Hungarian Forint (Ft)</option>
-            <option value="RUB|₽|Russian Ruble">🇷🇺 RUB — Russian Ruble (₽)</option>
-            <option value="UAH|₴|Ukrainian Hryvnia">🇺🇦 UAH — Ukrainian Hryvnia (₴)</option>
-          </optgroup>
-          <optgroup label="🌏 Oceania">
-            <option value="AUD|A$|Australian Dollar">🇦🇺 AUD — Australian Dollar (A$)</option>
-            <option value="NZD|NZ$|New Zealand Dollar">🇳🇿 NZD — New Zealand Dollar (NZ$)</option>
-          </optgroup>
-        </select>
-        <div class="cur-prev" id="cur-prev"></div>
-      </div>
-      <button class="btn-auth" onclick="doRegister()">Create Account →</button>
-      <div class="au-div">or</div>
-      <div class="au-sw">Already have an account? <a href="#" onclick="switchTab('login');return false;">Sign in</a></div>
-    </div>
+    <div class="au-tabs"><button class="au-tab active" onclick="switchTab('login')">Sign In</button><button class="au-tab" onclick="switchTab('register')">Create Account</button></div>
+    <div class="au-form active" id="f-login"><div class="au-form-title">Welcome back</div><div class="au-form-sub">Sign in to your FinTrack account</div><div class="aue" id="l-err"></div><div class="fi"><label>Username</label><input type="text" id="l-u" placeholder="your username" autocomplete="username"></div><div class="fi"><label>Password</label><input type="password" id="l-p" placeholder="your password" autocomplete="current-password"></div><button class="btn-auth" onclick="doLogin()">Sign In →</button><div class="au-div">or</div><div class="au-sw">No account? <a href="#" onclick="switchTab('register');return false;">Create one free</a></div></div>
+    <div class="au-form" id="f-reg"><div class="au-form-title">Create account</div><div class="au-form-sub">Set up your personal finance tracker</div><div class="aue" id="r-err"></div><div class="fi-row"><div class="fi"><label>First Name</label><input type="text" id="r-fn" placeholder="Aryan"></div><div class="fi"><label>Last Name</label><input type="text" id="r-ln" placeholder="Shah"></div></div><div class="fi"><label>Username <span style="color:var(--crimson)">*</span></label><input type="text" id="r-u" placeholder="aryanshah99" autocomplete="username"><div class="fi-hint">Unique login ID — letters, numbers, underscores only</div></div><div class="fi-row"><div class="fi"><label>Password <span style="color:var(--crimson)">*</span></label><input type="password" id="r-p" placeholder="min 6 chars" autocomplete="new-password"></div><div class="fi"><label>Confirm Password <span style="color:var(--crimson)">*</span></label><input type="password" id="r-p2" placeholder="repeat"></div></div><div class="fi"><label>Currency <span style="color:var(--crimson)">*</span></label><select id="r-cur" onchange="onCurChange()"><option value="">— Select your currency —</option><optgroup label="🌏 Asia"><option value="INR|₹|Indian Rupee">🇮🇳 INR — Indian Rupee (₹)</option><option value="PKR|₨|Pakistani Rupee">🇵🇰 PKR — Pakistani Rupee (₨)</option><option value="USD|$|US Dollar">🇺🇸 USD — US Dollar ($)</option><option value="EUR|€|Euro">🇪🇺 EUR — Euro (€)</option><option value="GBP|£|British Pound">🇬🇧 GBP — British Pound (£)</option></optgroup></select><div class="cur-prev" id="cur-prev"></div></div><button class="btn-auth" onclick="doRegister()">Create Account →</button><div class="au-div">or</div><div class="au-sw">Already have an account? <a href="#" onclick="switchTab('login');return false;">Sign in</a></div></div>
   </div>
 </div>
 
 <!-- APP SCREEN -->
 <div id="app-screen">
-  <div class="topbar">
-    <div class="tb-logo">Fin<span>Track</span></div>
-    <div class="tb-user">
-      <div class="tb-av" id="tb-av">?</div>
-      <div class="tb-info"><strong id="tb-name">—</strong><small id="tb-cur">—</small></div>
-      <button class="btn-logout" onclick="doLogout()">Sign Out</button>
-    </div>
-  </div>
-  <div class="app-body">
-    <aside class="sidebar">
-      <div class="sb-sec">Views</div>
-      <button class="nav-btn active" data-p="dashboard" onclick="showPage('dashboard',this)"><span class="ic">📊</span>Dashboard</button>
-      <button class="nav-btn" data-p="monthly" onclick="showPage('monthly',this)"><span class="ic">📅</span>Monthly</button>
-      <button class="nav-btn" data-p="weekly" onclick="showPage('weekly',this)"><span class="ic">📆</span>Weekly</button>
-      <button class="nav-btn" data-p="yearly" onclick="showPage('yearly',this)"><span class="ic">📈</span>Yearly</button>
-      <button class="nav-btn" data-p="custom" onclick="showPage('custom',this)"><span class="ic">🔍</span>Custom Range</button>
-      <div class="sb-sec">Data</div>
-      <button class="nav-btn" data-p="transactions" onclick="showPage('transactions',this)"><span class="ic">📋</span>All Transactions</button>
-      <button class="nav-btn" data-p="profile" onclick="showPage('profile',this)"><span class="ic">👤</span>My Profile</button>
-      <div class="sb-add"><button class="btn-sb-add" onclick="openAddModal()">＋ Add Transaction</button></div>
-    </aside>
+  <div class="topbar"><div class="tb-logo">Fin<span>Track</span></div><div class="tb-user"><div class="tb-av" id="tb-av">?</div><div class="tb-info"><strong id="tb-name">—</strong><small id="tb-cur">—</small></div><button class="btn-logout" onclick="doLogout()">Sign Out</button></div></div>
+  <div class="app-body"><aside class="sidebar"><div class="sb-sec">Views</div><button class="nav-btn active" data-p="dashboard" onclick="showPage('dashboard',this)"><span class="ic">📊</span>Dashboard</button><button class="nav-btn" data-p="monthly" onclick="showPage('monthly',this)"><span class="ic">📅</span>Monthly</button><button class="nav-btn" data-p="weekly" onclick="showPage('weekly',this)"><span class="ic">📆</span>Weekly</button><button class="nav-btn" data-p="yearly" onclick="showPage('yearly',this)"><span class="ic">📈</span>Yearly</button><button class="nav-btn" data-p="custom" onclick="showPage('custom',this)"><span class="ic">🔍</span>Custom Range</button><div class="sb-sec">Data</div><button class="nav-btn" data-p="transactions" onclick="showPage('transactions',this)"><span class="ic">📋</span>All Transactions</button><button class="nav-btn" data-p="profile" onclick="showPage('profile',this)"><span class="ic">👤</span>My Profile</button><div class="sb-add"><button class="btn-sb-add" onclick="openAddModal()">＋ Add Transaction</button></div></aside>
     <main class="main-c">
-      <!-- DASHBOARD -->
-      <div id="page-dashboard" class="page active">
-        <div class="ph"><div class="ph-t">Overview <em id="d-yr"></em></div><select id="d-yr-sel" class="fsel" onchange="renderDash()"></select></div>
-        <div class="cards" id="d-cards"></div>
-        <div class="cg"><div class="cb"><h4>Monthly Income vs Expense</h4><canvas id="dBarC"></canvas></div><div class="cb"><h4>Expense by Category</h4><canvas id="dPieC"></canvas></div></div>
-        <div class="tw" style="margin-top:18px;"><div class="tb-bar"><h3>Recent Transactions</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="r-tbody"></tbody></table></div></div>
-      </div>
-      <!-- MONTHLY -->
-      <div id="page-monthly" class="page">
-        <div class="ph"><div class="ph-t">Monthly View</div></div>
-        <div class="cal-hd"><button class="cnav" onclick="calNav(-1)">← Prev</button><h2 id="cal-ttl">Jan 2025</h2><button class="cnav" onclick="calNav(1)">Next →</button><select id="cal-m" class="msel" onchange="calJump()"></select><select id="cal-y" class="msel" onchange="calJump()"></select></div>
-        <div class="cards" id="m-cards" style="margin-bottom:14px;"></div>
-        <div class="cgw"><div class="cdow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="cbody" id="cal-body"></div></div>
-      </div>
-      <!-- WEEKLY -->
-      <div id="page-weekly" class="page">
-        <div class="ph"><div class="ph-t">Weekly View</div></div>
-        <div class="wkc"><select id="wk-y" class="fsel" onchange="renderWeekly()"></select><select id="wk-w" class="fsel" onchange="renderWeekly()"></select></div>
-        <div id="wk-bar" class="wkb"></div>
-        <div class="mstats" id="wk-ms"></div>
-        <div class="tw"><div class="tb-bar"><h3>This Week's Transactions</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="wk-tb"></tbody></table></div></div>
-      </div>
-      <!-- YEARLY -->
-      <div id="page-yearly" class="page">
-        <div class="ph"><div class="ph-t">Yearly View</div></div>
-        <div class="yrc"><input type="number" id="yr-i" class="yri" placeholder="Year"><button class="bgo" onclick="renderYearly()">View →</button></div>
-        <div class="cards" id="yr-cards"></div>
-        <div class="tw"><div class="tb-bar"><h3 id="yr-ttl">Monthly Breakdown</h3></div><div class="tbl-s"><table><thead><tr><th>Month</th><th>Income</th><th>Expense</th><th>Net</th><th>Txns</th></tr></thead><tbody id="yr-tb"></tbody></table></div></div>
-        <div class="cg"><div class="cb"><h4>Monthly Trend</h4><canvas id="yrBarC"></canvas></div><div class="cb"><h4>Expense Categories</h4><canvas id="yrPieC"></canvas></div></div>
-      </div>
-      <!-- CUSTOM RANGE -->
-      <div id="page-custom" class="page">
-        <div class="ph"><div class="ph-t">Custom Range</div></div>
-        <div class="crf"><h3>Filter Transactions</h3>
-          <div class="crr">
-            <div class="crfield"><label>From</label><input type="date" id="cr-f"></div>
-            <div class="crfield"><label>To</label><input type="date" id="cr-t"></div>
-            <div class="crfield"><label>Category</label><select id="cr-c"><option value="">All</option><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select></div>
-            <div class="crfield"><label>Type</label><select id="cr-tp"><option value="">Both</option><option value="income">Income</option><option value="expense">Expense</option></select></div>
-            <button class="br" onclick="renderCustom()">Apply →</button>
-          </div>
-        </div>
-        <div class="cards" id="cr-cards"></div>
-        <div class="tw"><div class="tb-bar"><h3 id="cr-ttl">Results</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="cr-tb"></tbody></table></div></div>
-      </div>
-      <!-- ALL TRANSACTIONS -->
-      <div id="page-transactions" class="page">
-        <div class="ph"><div class="ph-t">All Transactions</div></div>
-        <div class="tw">
-          <div class="tb-bar">
-            <h3 id="tx-lbl">Records</h3>
-            <input type="text" class="srch" id="tx-s" placeholder="Search…" oninput="renderAllTx()">
-            <select class="fsel" id="tx-c" onchange="renderAllTx()"><option value="">All Categories</option><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select>
-            <select class="fsel" id="tx-tp" onchange="renderAllTx()"><option value="">Both</option><option value="income">Income</option><option value="expense">Expense</option></select>
-            <select class="fsel" id="tx-y" onchange="renderAllTx()"><option value="">All Years</option></select>
-          </div>
-          <div class="tbl-s"><table><thead><tr><th onclick="sortTx('date')" style="cursor:pointer">Date ↕</th><th>Description</th><th>Category</th><th>Type</th><th onclick="sortTx('amount')" style="cursor:pointer">Amount ↕</th><th>Actions</th></tr></thead><tbody id="tx-tb"></tbody></table></div>
-          <div class="pgn" id="tx-pg"></div>
-        </div>
-      </div>
-      <!-- PROFILE -->
-      <div id="page-profile" class="page">
-        <div class="ph"><div class="ph-t">My Profile</div></div>
-        <div class="pcard" id="pcard"></div>
-      </div>
+      <div id="page-dashboard" class="page active"><div class="ph"><div class="ph-t">Overview <em id="d-yr"></em></div><select id="d-yr-sel" class="fsel" onchange="renderDash()"></select></div><div class="cards" id="d-cards"></div><div class="cg"><div class="cb"><h4>Monthly Income vs Expense</h4><canvas id="dBarC"></canvas></div><div class="cb"><h4>Expense by Category</h4><canvas id="dPieC"></canvas></div></div><div class="tw"><div class="tb-bar"><h3>Recent Transactions</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="r-tbody"></tbody></table></div></div></div>
+      <div id="page-monthly" class="page"><div class="ph"><div class="ph-t">Monthly View</div></div><div class="cal-hd"><button class="cnav" onclick="calNav(-1)">← Prev</button><h2 id="cal-ttl">Jan 2025</h2><button class="cnav" onclick="calNav(1)">Next →</button><select id="cal-m" class="msel" onchange="calJump()"></select><select id="cal-y" class="msel" onchange="calJump()"></select></div><div class="cards" id="m-cards" style="margin-bottom:14px;"></div><div class="cgw"><div class="cdow"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="cbody" id="cal-body"></div></div></div>
+      <div id="page-weekly" class="page"><div class="ph"><div class="ph-t">Weekly View</div></div><div class="wkc"><select id="wk-y" class="fsel" onchange="renderWeekly()"></select><select id="wk-w" class="fsel" onchange="renderWeekly()"></select></div><div id="wk-bar" class="wkb"></div><div class="mstats" id="wk-ms"></div><div class="tw"><div class="tb-bar"><h3>This Week's Transactions</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="wk-tb"></tbody></table></div></div></div>
+      <div id="page-yearly" class="page"><div class="ph"><div class="ph-t">Yearly View</div></div><div class="yrc"><input type="number" id="yr-i" class="yri" placeholder="Year"><button class="bgo" onclick="renderYearly()">View →</button></div><div class="cards" id="yr-cards"></div><div class="tw"><div class="tb-bar"><h3 id="yr-ttl">Monthly Breakdown</h3></div><div class="tbl-s"><table><thead><tr><th>Month</th><th>Income</th><th>Expense</th><th>Net</th><th>Txns</th></tr></thead><tbody id="yr-tb"></tbody></table></div></div><div class="cg"><div class="cb"><h4>Monthly Trend</h4><canvas id="yrBarC"></canvas></div><div class="cb"><h4>Expense Categories</h4><canvas id="yrPieC"></canvas></div></div></div>
+      <div id="page-custom" class="page"><div class="ph"><div class="ph-t">Custom Range</div></div><div class="crf"><h3>Filter Transactions</h3><div class="crr"><div class="crfield"><label>From</label><input type="date" id="cr-f"></div><div class="crfield"><label>To</label><input type="date" id="cr-t"></div><div class="crfield"><label>Category</label><select id="cr-c"><option value="">All</option><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select></div><div class="crfield"><label>Type</label><select id="cr-tp"><option value="">Both</option><option value="income">Income</option><option value="expense">Expense</option></select></div><button class="br" onclick="renderCustom()">Apply →</button></div></div><div class="cards" id="cr-cards"></div><div class="tw"><div class="tb-bar"><h3 id="cr-ttl">Results</h3></div><div class="tbl-s"><table><thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th>Amount</th><th></th></tr></thead><tbody id="cr-tb"></tbody></table></div></div></div>
+      <div id="page-transactions" class="page"><div class="ph"><div class="ph-t">All Transactions</div></div><div class="tw"><div class="tb-bar"><h3 id="tx-lbl">Records</h3><input type="text" class="srch" id="tx-s" placeholder="Search…" oninput="renderAllTx()"><select class="fsel" id="tx-c" onchange="renderAllTx()"><option value="">All Categories</option><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select><select class="fsel" id="tx-tp" onchange="renderAllTx()"><option value="">Both</option><option value="income">Income</option><option value="expense">Expense</option></select><select class="fsel" id="tx-y" onchange="renderAllTx()"><option value="">All Years</option></select></div><div class="tbl-s"><table><thead><tr><th onclick="sortTx('date')" style="cursor:pointer">Date ↕</th><th>Description</th><th>Category</th><th>Type</th><th onclick="sortTx('amount')" style="cursor:pointer">Amount ↕</th><th>Actions</th></tr></thead><tbody id="tx-tb"></tbody></table></div><div class="pgn" id="tx-pg"></div></div></div>
+      <div id="page-profile" class="page"><div class="ph"><div class="ph-t">My Profile</div></div><div class="pcard" id="pcard"></div></div>
     </main>
   </div>
-  <nav class="mob-nav">
-    <button class="nav-btn active" data-p="dashboard" onclick="showPage('dashboard',this)"><span class="ic">📊</span>Dash</button>
-    <button class="nav-btn" data-p="monthly" onclick="showPage('monthly',this)"><span class="ic">📅</span>Monthly</button>
-    <button class="nav-btn" data-p="weekly" onclick="showPage('weekly',this)"><span class="ic">📆</span>Weekly</button>
-    <button class="nav-btn" data-p="yearly" onclick="showPage('yearly',this)"><span class="ic">📈</span>Yearly</button>
-    <button class="nav-btn" data-p="transactions" onclick="showPage('transactions',this)"><span class="ic">📋</span>All</button>
-    <button class="nav-btn" onclick="openAddModal()"><span class="ic">➕</span>Add</button>
-  </nav>
+  <nav class="mob-nav"><button class="nav-btn active" data-p="dashboard" onclick="showPage('dashboard',this)"><span class="ic">📊</span>Dash</button><button class="nav-btn" data-p="monthly" onclick="showPage('monthly',this)"><span class="ic">📅</span>Monthly</button><button class="nav-btn" data-p="weekly" onclick="showPage('weekly',this)"><span class="ic">📆</span>Weekly</button><button class="nav-btn" data-p="yearly" onclick="showPage('yearly',this)"><span class="ic">📈</span>Yearly</button><button class="nav-btn" data-p="transactions" onclick="showPage('transactions',this)"><span class="ic">📋</span>All</button><button class="nav-btn" onclick="openAddModal()"><span class="ic">➕</span>Add</button></nav>
 </div>
 
-<!-- TX MODAL -->
-<div class="overlay" id="tx-ov" onclick="cTxOv(event)">
-  <div class="modal" onclick="event.stopPropagation()">
-    <div class="mhd"><h2 id="m-title">Add Transaction</h2><button class="cx" onclick="cTxM()">×</button></div>
-    <div class="tt" id="type-tt">
-      <button class="inc active" onclick="setTT('income',this)">💰 Income</button>
-      <button class="exp" onclick="setTT('expense',this)">💸 Expense</button>
-    </div>
-    <div class="mfr"><div class="mff"><label>Date *</label><input type="date" id="m-d"></div><div class="mff"><label>Amount *</label><input type="number" id="m-a" min="0" step="0.01" placeholder="0.00"></div></div>
-    <div class="mff"><label>Description *</label><input type="text" id="m-desc" placeholder="e.g. Grocery shopping"></div>
-    <div class="mfr">
-      <div class="mff"><label>Category *</label><select id="m-cat"><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select></div>
-      <div class="mff"><label>Notes</label><input type="text" id="m-n" placeholder="Optional"></div>
-    </div>
-    <button class="bsub" id="m-sub" onclick="submitTx()">Save Transaction</button>
-  </div>
-</div>
-
-<!-- DAY MODAL -->
-<div class="overlay" id="day-ov" onclick="if(event.target===this)this.classList.remove('open')">
-  <div class="modal" onclick="event.stopPropagation()" style="max-width:415px;">
-    <div class="mhd"><h2 id="day-ttl">Day</h2><button class="cx" onclick="document.getElementById('day-ov').classList.remove('open')">×</button></div>
-    <ul class="dtl" id="day-list"></ul>
-    <button class="bsub" style="margin-top:14px;" onclick="addFromDay()">＋ Add on this day</button>
-  </div>
-</div>
-
+<!-- MODALS -->
+<div class="overlay" id="tx-ov" onclick="if(event.target===this) cTxM()"><div class="modal" onclick="event.stopPropagation()"><div class="mhd"><h2 id="m-title">Add Transaction</h2><button class="cx" onclick="cTxM()">×</button></div><div class="tt" id="type-tt"><button class="inc active" onclick="setTT('income',this)">💰 Income</button><button class="exp" onclick="setTT('expense',this)">💸 Expense</button></div><div class="mfr"><div class="mff"><label>Date *</label><input type="date" id="m-d"></div><div class="mff"><label>Amount *</label><input type="number" id="m-a" min="0" step="0.01" placeholder="0.00"></div></div><div class="mff"><label>Description *</label><input type="text" id="m-desc" placeholder="e.g. Grocery shopping"></div><div class="mfr"><div class="mff"><label>Category *</label><select id="m-cat"><option>Food</option><option>Transport</option><option>Rent</option><option>Utilities</option><option>Shopping</option><option>Entertainment</option><option>Health</option><option>Salary</option><option>Freelance</option><option>Business</option><option>Investment</option><option>Other</option></select></div><div class="mff"><label>Notes</label><input type="text" id="m-n" placeholder="Optional"></div></div><button class="bsub" id="m-sub" onclick="submitTx()">Save Transaction</button></div></div>
+<div class="overlay" id="day-ov" onclick="if(event.target===this)this.classList.remove('open')"><div class="modal" onclick="event.stopPropagation()" style="max-width:415px;"><div class="mhd"><h2 id="day-ttl">Day</h2><button class="cx" onclick="document.getElementById('day-ov').classList.remove('open')">×</button></div><ul class="dtl" id="day-list"></ul><button class="bsub" style="margin-top:14px;" onclick="addFromDay()">＋ Add on this day</button></div></div>
 <div class="toast" id="toast"></div>
 
 <script>
-/* ===== STORAGE ===== */
+// ---------- STORAGE HELPERS ----------
 const UK = 'ft_users_v2';
 const SK = 'ft_session_v2';
 const dk = u => 'ft_data_v2_'+u;
@@ -515,7 +295,7 @@ const getSess = () => { try{return JSON.parse(localStorage.getItem(SK));}catch{r
 const setSess = s => localStorage.setItem(SK, JSON.stringify(s));
 const clrSess = () => localStorage.removeItem(SK);
 
-/* ===== STATE ===== */
+// ---------- GLOBAL STATE ----------
 let CU=null, UD=null, SYM='₹';
 let editId=null, curType='income';
 let calY=new Date().getFullYear(), calM=new Date().getMonth();
@@ -527,10 +307,7 @@ const MONTHS=['January','February','March','April','May','June','July','August',
 const MS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
 const CC={Food:'#e67e22',Transport:'#3498db',Rent:'#8e44ad',Utilities:'#1abc9c',Shopping:'#e74c3c',Entertainment:'#f39c12',Health:'#2ecc71',Salary:'#27ae60',Freelance:'#2980b9',Business:'#6c5ce7',Investment:'#00b894',Other:'#b2bec3'};
 
-/* ===== TOAST ===== */
 function toast(m,t=''){const e=document.getElementById('toast');e.textContent=m;e.className='toast '+(t||'');e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2700);}
-
-/* ===== AUTH UI ===== */
 function updUC(){const u=getUsers(),n=Object.keys(u).length;document.getElementById('uc-text').textContent=n===0?'Be the first to join!':n+' account'+(n!==1?'s':'')+' registered';}
 function switchTab(t){
   document.querySelectorAll('.au-tab').forEach((b,i)=>b.classList.toggle('active',(i===0&&t==='login')||(i===1&&t==='register')));
@@ -540,18 +317,13 @@ function switchTab(t){
 function onCurChange(){
   const v=document.getElementById('r-cur').value, p=document.getElementById('cur-prev');
   if(!v){p.style.display='none';return;}
-  const [c,s,n]=v.split('|');p.style.display='block';p.textContent=s+'  '+c+' — '+n;
+  const [c,s]=v.split('|');p.style.display='block';p.textContent=s+'  '+c;
 }
 function showErr(id,m){const e=document.getElementById(id);e.textContent=m;e.classList.add('show');}
 function hash(s){let h=0;for(let i=0;i<s.length;i++){h=((h<<5)-h)+s.charCodeAt(i);h|=0;}return 'h'+Math.abs(h).toString(36)+'_'+s.length;}
-
-/* ===== REGISTER ===== */
 function doRegister(){
-  const fn=document.getElementById('r-fn').value.trim();
-  const ln=document.getElementById('r-ln').value.trim();
-  const u=document.getElementById('r-u').value.trim().toLowerCase();
-  const p=document.getElementById('r-p').value;
-  const p2=document.getElementById('r-p2').value;
+  const fn=document.getElementById('r-fn').value.trim(), ln=document.getElementById('r-ln').value.trim();
+  const u=document.getElementById('r-u').value.trim().toLowerCase(), p=document.getElementById('r-p').value, p2=document.getElementById('r-p2').value;
   const cv=document.getElementById('r-cur').value;
   document.getElementById('r-err').classList.remove('show');
   if(!u||u.length<3){showErr('r-err','Username must be at least 3 characters');return;}
@@ -569,11 +341,8 @@ function doRegister(){
   updUC();
   setTimeout(()=>{document.getElementById('l-u').value=u;document.getElementById('l-p').value=p;doLogin();},400);
 }
-
-/* ===== LOGIN ===== */
 function doLogin(){
-  const u=document.getElementById('l-u').value.trim().toLowerCase();
-  const p=document.getElementById('l-p').value;
+  const u=document.getElementById('l-u').value.trim().toLowerCase(), p=document.getElementById('l-p').value;
   document.getElementById('l-err').classList.remove('show');
   if(!u||!p){showErr('l-err','Please enter username and password');return;}
   const users=getUsers(),usr=users[u];
@@ -583,8 +352,6 @@ function doLogin(){
   CU=usr;UD=getUD(usr.uid);SYM=usr.currencySymbol;
   launchApp();
 }
-
-/* ===== LOGOUT ===== */
 function doLogout(){
   if(!confirm('Sign out of FinTrack?')) return;
   clrSess();CU=null;UD=null;SYM='₹';
@@ -593,8 +360,6 @@ function doLogout(){
   document.getElementById('l-u').value='';document.getElementById('l-p').value='';
   updUC();toast('Signed out');
 }
-
-/* ===== LAUNCH ===== */
 function launchApp(){
   document.getElementById('auth-screen').style.display='none';
   const app=document.getElementById('app-screen');app.style.display='flex';
@@ -606,14 +371,11 @@ function launchApp(){
   document.getElementById('yr-i').value=calY;
   const mn=String(calM+1).padStart(2,'0');
   document.getElementById('cr-f').value=`${calY}-${mn}-01`;
-  document.getElementById('cr-t').value=todayS();
+  document.getElementById('cr-t').value=new Date().toISOString().split('T')[0];
   showPage('dashboard',document.querySelector('.nav-btn[data-p="dashboard"]'));
 }
-
-/* ===== HELPERS ===== */
 function save(){saveUD(CU.uid,UD);}
 function nextId(){return UD.transactions.length?Math.max(...UD.transactions.map(t=>t.id))+1:1;}
-function todayS(){return new Date().toISOString().split('T')[0];}
 function fmt(n){const abs=Math.abs(n||0);let s;if(abs>=1e7)s=(abs/1e7).toFixed(2)+'Cr';else if(abs>=1e5)s=(abs/1e5).toFixed(2)+'L';else if(abs>=1e3)s=(abs/1e3).toFixed(1)+'K';else s=abs.toFixed(2);return(n<0?'-':'')+SYM+s;}
 function fmtF(n){return SYM+Math.abs(n||0).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});}
 function fmtD(d){const[y,m,dy]=d.split('-');return `${parseInt(dy)} ${MS[parseInt(m)-1]} ${y}`;}
@@ -622,61 +384,27 @@ function txM(y,m){const mm=String(m+1).padStart(2,'0');return UD.transactions.fi
 function txR(a,b){return UD.transactions.filter(t=>t.date>=a&&t.date<=b);}
 function sI(a){return a.filter(t=>t.type==='income').reduce((s,t)=>s+t.amount,0);}
 function sE(a){return a.filter(t=>t.type==='expense').reduce((s,t)=>s+t.amount,0);}
-
-/* ===== PAGE NAV ===== */
-function showPage(id,btn){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.nav-btn[data-p]').forEach(b=>b.classList.remove('active'));
-  document.getElementById('page-'+id).classList.add('active');
-  document.querySelectorAll(`.nav-btn[data-p="${id}"]`).forEach(b=>b.classList.add('active'));
-  if(id==='dashboard')    renderDash();
-  if(id==='monthly')      renderCal();
-  if(id==='weekly')       renderWeekly();
-  if(id==='yearly')       renderYearly();
-  if(id==='transactions') renderAllTx();
-  if(id==='profile')      renderProfile();
-}
 function refreshCur(){
   const a=document.querySelector('.page.active');if(!a)return;
   const id=a.id.replace('page-','');
   if(id==='dashboard')renderDash();if(id==='monthly')renderCal();if(id==='weekly')renderWeekly();
   if(id==='yearly')renderYearly();if(id==='transactions')renderAllTx();if(id==='custom')renderCustom();if(id==='profile')renderProfile();
 }
-
-/* ===== TX ROW ===== */
 function txRow(tx){
   const c=CC[tx.category]||'#b2bec3';
-  return `<tr>
-    <td>${fmtD(tx.date)}</td>
-    <td><strong>${tx.description}</strong>${tx.notes?`<br><small style="color:var(--fog)">${tx.notes}</small>`:''}</td>
-    <td><span class="cpill" style="background:${c}22;color:${c}">${tx.category}</span></td>
-    <td><span style="font-size:0.7rem;font-weight:700;color:${tx.type==='income'?'var(--emerald)':'var(--crimson)'}">${tx.type==='income'?'Income':'Expense'}</span></td>
-    <td class="${tx.type==='income'?'ap':'an'}">${tx.type==='income'?'+':'-'}${fmtF(tx.amount)}</td>
-    <td><div class="abtns"><button class="bedit" onclick="openEdit(${tx.id})">Edit</button><button class="bdel" onclick="delTx(${tx.id})">Del</button></div></td>
-  </tr>`;
+  return `<tr><td>${fmtD(tx.date)}</td><td><strong>${tx.description}</strong>${tx.notes?`<br><small style="color:var(--fog)">${tx.notes}</small>`:''}</td><td><span class="cpill" style="background:${c}22;color:${c}">${tx.category}</span></td><td><span style="font-size:0.7rem;font-weight:700;color:${tx.type==='income'?'var(--emerald)':'var(--crimson)'}">${tx.type==='income'?'Income':'Expense'}</span></td><td class="${tx.type==='income'?'ap':'an'}">${tx.type==='income'?'+':'-'}${fmtF(tx.amount)}</td><td><div class="abtns"><button class="bedit" onclick="openEdit(${tx.id})">Edit</button><button class="bdel" onclick="delTx(${tx.id})">Del</button></div></td></tr>`;
 }
-
-/* ===== DASHBOARD ===== */
-function popYSel(id,cb){
-  const sel=document.getElementById(id);
+function renderDash(){
+  const sel=document.getElementById('d-yr-sel');
   const years=[...new Set(UD.transactions.map(t=>t.date.split('-')[0]))].sort((a,b)=>b-a);
   const cur=String(new Date().getFullYear());
   if(!years.includes(cur))years.unshift(cur);
   const prev=sel.value;
   sel.innerHTML=years.map(y=>`<option value="${y}"${y===(prev||cur)?' selected':''}>${y}</option>`).join('');
-  if(cb)sel.onchange=cb;
-}
-function renderDash(){
-  popYSel('d-yr-sel',renderDash);
-  const y=parseInt(document.getElementById('d-yr-sel').value)||new Date().getFullYear();
+  const y=parseInt(sel.value)||new Date().getFullYear();
   document.getElementById('d-yr').textContent=y;
   const txs=txY(y),inc=sI(txs),exp=sE(txs),net=inc-exp;
-  document.getElementById('d-cards').innerHTML=`
-    <div class="sc g"><div class="lbl">Total Income</div><div class="val">${fmt(inc)}</div></div>
-    <div class="sc r"><div class="lbl">Total Expense</div><div class="val">${fmt(exp)}</div></div>
-    <div class="sc b"><div class="lbl">Net Balance</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>
-    <div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>
-  `;
+  document.getElementById('d-cards').innerHTML=`<div class="sc g"><div class="lbl">Total Income</div><div class="val">${fmt(inc)}</div></div><div class="sc r"><div class="lbl">Total Expense</div><div class="val">${fmt(exp)}</div></div><div class="sc b"><div class="lbl">Net Balance</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div><div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>`;
   const mI=[],mE=[];for(let m=0;m<12;m++){const mt=txM(y,m);mI.push(sI(mt));mE.push(sE(mt));}
   if(dBarC)dBarC.destroy();
   dBarC=new Chart(document.getElementById('dBarC'),{type:'bar',data:{labels:MS,datasets:[{label:'Income',data:mI,backgroundColor:'#1e8c5a55',borderColor:'#1e8c5a',borderWidth:2,borderRadius:5},{label:'Expense',data:mE,backgroundColor:'#c0392b55',borderColor:'#c0392b',borderWidth:2,borderRadius:5}]},options:{responsive:true,maintainAspectRatio:true,plugins:{legend:{labels:{font:{size:10},color:'#0b0f1a'}}},scales:{y:{ticks:{callback:v=>fmt(v),color:'#4a6080'},grid:{color:'#e0dbd2'}},x:{ticks:{color:'#4a6080'},grid:{display:false}}}}});
@@ -687,30 +415,18 @@ function renderDash(){
   const rec=[...UD.transactions].sort((a,b)=>b.date.localeCompare(a.date)).slice(0,8);
   document.getElementById('r-tbody').innerHTML=rec.length?rec.map(txRow).join(''):`<tr class="er"><td colspan="6">No transactions yet. Add your first one!</td></tr>`;
 }
-
-/* ===== CALENDAR ===== */
-function popCalSels(){
+function renderCal(){
   const ms=document.getElementById('cal-m'),ys=document.getElementById('cal-y');
   ms.innerHTML=MONTHS.map((m,i)=>`<option value="${i}"${i===calM?' selected':''}>${m}</option>`).join('');
   const yrs=[...new Set(UD.transactions.map(t=>parseInt(t.date.split('-')[0])))];
   if(!yrs.includes(calY))yrs.push(calY);yrs.sort((a,b)=>b-a);
   ys.innerHTML=yrs.map(y=>`<option value="${y}"${y===calY?' selected':''}>${y}</option>`).join('');
-}
-function calNav(d){calM+=d;if(calM<0){calM=11;calY--;}else if(calM>11){calM=0;calY++;}renderCal();}
-function calJump(){calM=parseInt(document.getElementById('cal-m').value);calY=parseInt(document.getElementById('cal-y').value);renderCal();}
-function renderCal(){
-  popCalSels();
   document.getElementById('cal-ttl').textContent=`${MONTHS[calM]} ${calY}`;
   const txs=txM(calY,calM),inc=sI(txs),exp=sE(txs),net=inc-exp;
-  document.getElementById('m-cards').innerHTML=`
-    <div class="sc g"><div class="lbl">Income</div><div class="val">${fmt(inc)}</div></div>
-    <div class="sc r"><div class="lbl">Expense</div><div class="val">${fmt(exp)}</div></div>
-    <div class="sc b"><div class="lbl">Net</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>
-    <div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>
-  `;
+  document.getElementById('m-cards').innerHTML=`<div class="sc g"><div class="lbl">Income</div><div class="val">${fmt(inc)}</div></div><div class="sc r"><div class="lbl">Expense</div><div class="val">${fmt(exp)}</div></div><div class="sc b"><div class="lbl">Net</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div><div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>`;
   const first=new Date(calY,calM,1);let sd=first.getDay();if(sd===0)sd=7;
   const dim=new Date(calY,calM+1,0).getDate();
-  const today=todayS();
+  const today=new Date().toISOString().split('T')[0];
   const tbd={};txs.forEach(t=>{const d=parseInt(t.date.split('-')[2]);if(!tbd[d])tbd[d]=[];tbd[d].push(t);});
   let html='';const total=sd-1+dim,rows=Math.ceil(total/7)*7;
   for(let i=0;i<rows;i++){
@@ -723,27 +439,17 @@ function renderCal(){
   }
   document.getElementById('cal-body').innerHTML=html;
 }
-function showDayM(ds,dn){
-  dayDateG=ds;
-  const txs=UD.transactions.filter(t=>t.date===ds);
+function calNav(d){calM+=d;if(calM<0){calM=11;calY--;}else if(calM>11){calM=0;calY++;}renderCal();}
+function calJump(){calM=parseInt(document.getElementById('cal-m').value);calY=parseInt(document.getElementById('cal-y').value);renderCal();}
+function showDayM(ds,dn){dayDateG=ds;const txs=UD.transactions.filter(t=>t.date===ds);
   document.getElementById('day-ttl').textContent=`${dn} ${MONTHS[calM]} ${calY}`;
-  const list=document.getElementById('day-list');
-  list.innerHTML=txs.length?txs.map(t=>`<li class="dti">
-    <span style="font-size:1.1rem">${t.type==='income'?'💰':'💸'}</span>
-    <div class="dtd"><strong>${t.description}</strong><small>${t.category}${t.notes?' · '+t.notes:''}</small></div>
-    <span class="dta ${t.type==='income'?'ap':'an'}">${t.type==='income'?'+':'-'}${fmtF(t.amount)}</span>
-    <button class="bedit" onclick="openEdit(${t.id});document.getElementById('day-ov').classList.remove('open')">Edit</button>
-    <button class="bdel" onclick="delTx(${t.id});document.getElementById('day-ov').classList.remove('open')">Del</button>
-  </li>`).join(''):`<li style="color:var(--fog);font-style:italic;padding:8px 0">No transactions on this day</li>`;
+  document.getElementById('day-list').innerHTML=txs.length?txs.map(t=>`<li class="dti"><span style="font-size:1.1rem">${t.type==='income'?'💰':'💸'}</span><div class="dtd"><strong>${t.description}</strong><small>${t.category}${t.notes?' · '+t.notes:''}</small></div><span class="dta ${t.type==='income'?'ap':'an'}">${t.type==='income'?'+':'-'}${fmtF(t.amount)}</span><button class="bedit" onclick="openEdit(${t.id});document.getElementById('day-ov').classList.remove('open')">Edit</button><button class="bdel" onclick="delTx(${t.id});document.getElementById('day-ov').classList.remove('open')">Del</button></li>`).join(''):`<li style="color:var(--fog);font-style:italic;padding:8px 0">No transactions on this day</li>`;
   document.getElementById('day-ov').classList.add('open');
 }
 function addFromDay(){document.getElementById('day-ov').classList.remove('open');openAddModal(dayDateG);}
-
-/* ===== WEEKLY ===== */
 function getWkDates(y,w){const j=new Date(y,0,1);const dtm=j.getDay()===0?1:(8-j.getDay());const fm=new Date(y,0,1+dtm-7);const s=new Date(fm);s.setDate(s.getDate()+(w-1)*7);const e=new Date(s);e.setDate(e.getDate()+6);return{s,e};}
-function isoD(d){return d.toISOString().split('T')[0];}
 function wkInY(y){const l=new Date(y,11,31);const j=new Date(y,0,1);return Math.ceil(((l-j)/86400000+j.getDay()+1)/7);}
-function popWkSels(){
+function renderWeekly(){
   const ys=document.getElementById('wk-y'),ws=document.getElementById('wk-w');
   const years=[...new Set(UD.transactions.map(t=>t.date.split('-')[0]))].sort((a,b)=>b-a);
   const cur=String(new Date().getFullYear());if(!years.includes(cur))years.unshift(cur);
@@ -752,37 +458,22 @@ function popWkSels(){
   const y=parseInt(ys.value)||new Date().getFullYear();
   const nw=wkInY(y);const pw=ws.value;
   ws.innerHTML=Array.from({length:nw},(_,i)=>{const{s,e}=getWkDates(y,i+1);return `<option value="${i+1}"${String(i+1)===pw?' selected':''}>W${i+1} · ${s.getDate()} ${MS[s.getMonth()]} – ${e.getDate()} ${MS[e.getMonth()]}</option>`;}).join('');
-}
-function renderWeekly(){
-  popWkSels();
-  const y=parseInt(document.getElementById('wk-y').value)||new Date().getFullYear();
-  const w=parseInt(document.getElementById('wk-w').value)||1;
+  const w=parseInt(ws.value)||1;
   const{s,e}=getWkDates(y,w);const si=isoD(s),ei=isoD(e);
   const txs=UD.transactions.filter(t=>t.date>=si&&t.date<=ei);
   const inc=sI(txs),exp=sE(txs),net=inc-exp;
   document.getElementById('wk-bar').innerHTML=`<div class="wkl">Week ${w} of ${y}</div><div class="wkt">${s.getDate()} ${MONTHS[s.getMonth()]} – ${e.getDate()} ${MONTHS[e.getMonth()]} ${y}</div>`;
-  document.getElementById('wk-ms').innerHTML=`
-    <div class="ms"><div class="ml">Income</div><div class="mv" style="color:var(--emerald)">${fmt(inc)}</div></div>
-    <div class="ms"><div class="ml">Expense</div><div class="mv" style="color:var(--crimson)">${fmt(exp)}</div></div>
-    <div class="ms"><div class="ml">Net</div><div class="mv" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>
-  `;
-  const sorted=[...txs].sort((a,b)=>b.date.localeCompare(a.date));
-  document.getElementById('wk-tb').innerHTML=sorted.length?sorted.map(txRow).join(''):`<tr class="er"><td colspan="6">No transactions this week</td></tr>`;
+  document.getElementById('wk-ms').innerHTML=`<div class="ms"><div class="ml">Income</div><div class="mv" style="color:var(--emerald)">${fmt(inc)}</div></div><div class="ms"><div class="ml">Expense</div><div class="mv" style="color:var(--crimson)">${fmt(exp)}</div></div><div class="ms"><div class="ml">Net</div><div class="mv" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>`;
+  document.getElementById('wk-tb').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(txRow).join('')||`<tr class="er"><td colspan="6">No transactions this week</tr>`;
 }
-
-/* ===== YEARLY ===== */
+function isoD(d){return d.toISOString().split('T')[0];}
 function renderYearly(){
   const y=parseInt(document.getElementById('yr-i').value)||new Date().getFullYear();
   document.getElementById('yr-i').value=y;
   const txs=txY(y),inc=sI(txs),exp=sE(txs),net=inc-exp;
-  document.getElementById('yr-cards').innerHTML=`
-    <div class="sc g"><div class="lbl">Income ${y}</div><div class="val">${fmt(inc)}</div></div>
-    <div class="sc r"><div class="lbl">Expense ${y}</div><div class="val">${fmt(exp)}</div></div>
-    <div class="sc b"><div class="lbl">Net ${y}</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>
-    <div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>
-  `;
+  document.getElementById('yr-cards').innerHTML=`<div class="sc g"><div class="lbl">Income ${y}</div><div class="val">${fmt(inc)}</div></div><div class="sc r"><div class="lbl">Expense ${y}</div><div class="val">${fmt(exp)}</div></div><div class="sc b"><div class="lbl">Net ${y}</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div><div class="sc a"><div class="lbl">Transactions</div><div class="val">${txs.length}</div></div>`;
   document.getElementById('yr-ttl').textContent=`Monthly Breakdown — ${y}`;
-  const mI=[],mE=[];let rows='';
+  let rows='';const mI=[],mE=[];
   for(let m=0;m<12;m++){const mt=txM(y,m);const mi=sI(mt),me=sE(mt),mn=mi-me;mI.push(mi);mE.push(me);rows+=`<tr><td><strong>${MONTHS[m]}</strong></td><td class="ap">${mi>0?fmtF(mi):'—'}</td><td class="an">${me>0?fmtF(me):'—'}</td><td style="color:${mn>=0?'var(--emerald)':'var(--crimson)'};font-weight:700">${fmtF(mn)}</td><td>${mt.length}</td></tr>`;}
   rows+=`<tr style="border-top:2px solid var(--night);font-weight:700"><td>TOTAL</td><td class="ap">${fmtF(inc)}</td><td class="an">${fmtF(exp)}</td><td style="color:${net>=0?'var(--emerald)':'var(--crimson)'};font-weight:800">${fmtF(net)}</td><td>${txs.length}</td></tr>`;
   document.getElementById('yr-tb').innerHTML=rows;
@@ -793,31 +484,19 @@ function renderYearly(){
   const cats=Object.keys(ce),vals=Object.values(ce);
   yPieC=new Chart(document.getElementById('yrPieC'),{type:'doughnut',data:{labels:cats.length?cats:['No data'],datasets:[{data:vals.length?vals:[1],backgroundColor:cats.length?cats.map(c=>CC[c]||'#b2bec3'):['#e0dbd2'],borderWidth:2,borderColor:'#fff'}]},options:{responsive:true,plugins:{legend:{labels:{color:'#0b0f1a',font:{size:10}}},tooltip:{callbacks:{label:ctx=>`${ctx.label}: ${fmtF(ctx.raw)}`}}}}});
 }
-
-/* ===== CUSTOM ===== */
 function renderCustom(){
   const f=document.getElementById('cr-f').value,t=document.getElementById('cr-t').value;
   const cat=document.getElementById('cr-c').value,tp=document.getElementById('cr-tp').value;
   if(!f||!t){toast('Please select both dates','red');return;}
-  if(f>t){toast('From must be before To','red');return;}
   let txs=txR(f,t);if(cat)txs=txs.filter(x=>x.category===cat);if(tp)txs=txs.filter(x=>x.type===tp);
   const inc=sI(txs),exp=sE(txs),net=inc-exp;
-  document.getElementById('cr-cards').innerHTML=`
-    <div class="sc g"><div class="lbl">Income</div><div class="val">${fmt(inc)}</div></div>
-    <div class="sc r"><div class="lbl">Expense</div><div class="val">${fmt(exp)}</div></div>
-    <div class="sc b"><div class="lbl">Net</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div>
-    <div class="sc a"><div class="lbl">Records</div><div class="val">${txs.length}</div></div>
-  `;
+  document.getElementById('cr-cards').innerHTML=`<div class="sc g"><div class="lbl">Income</div><div class="val">${fmt(inc)}</div></div><div class="sc r"><div class="lbl">Expense</div><div class="val">${fmt(exp)}</div></div><div class="sc b"><div class="lbl">Net</div><div class="val" style="color:${net>=0?'var(--emerald)':'var(--crimson)'}">${fmt(net)}</div></div><div class="sc a"><div class="lbl">Records</div><div class="val">${txs.length}</div></div>`;
   document.getElementById('cr-ttl').textContent=`${txs.length} result${txs.length!==1?'s':''} · ${fmtD(f)} to ${fmtD(t)}`;
-  document.getElementById('cr-tb').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(txRow).join('')||`<tr class="er"><td colspan="6">No transactions found</td></tr>`;
+  document.getElementById('cr-tb').innerHTML=[...txs].sort((a,b)=>b.date.localeCompare(a.date)).map(txRow).join('')||`<tr class="er"><td colspan="6">No transactions found</tr>`;
 }
-
-/* ===== ALL TX ===== */
 function sortTx(k){if(txSort.k===k)txSort.a=!txSort.a;else{txSort.k=k;txSort.a=false;}txPage=1;renderAllTx();}
 function renderAllTx(){
-  const s=(document.getElementById('tx-s').value||'').toLowerCase();
-  const cat=document.getElementById('tx-c').value,tp=document.getElementById('tx-tp').value;
-  const yr=document.getElementById('tx-y').value;
+  const s=(document.getElementById('tx-s').value||'').toLowerCase(),cat=document.getElementById('tx-c').value,tp=document.getElementById('tx-tp').value,yr=document.getElementById('tx-y').value;
   const ys=document.getElementById('tx-y');
   const years=[...new Set(UD.transactions.map(t=>t.date.split('-')[0]))].sort((a,b)=>b-a);
   const prev=ys.value;
@@ -830,92 +509,44 @@ function renderAllTx(){
   document.getElementById('tx-lbl').textContent=`${txs.length} Transaction${txs.length!==1?'s':''}`;
   const pages=Math.ceil(txs.length/PER)||1;if(txPage>pages)txPage=1;
   const sl=txs.slice((txPage-1)*PER,txPage*PER);
-  document.getElementById('tx-tb').innerHTML=sl.length?sl.map(txRow).join(''):`<tr class="er"><td colspan="6">No transactions found</td></tr>`;
-  let pg=`<span>${txs.length} records · Page ${txPage} of ${pages}</span><div class="pgb">`;
-  pg+=`<button class="pb" onclick="txPage=1;renderAllTx()" ${txPage===1?'disabled':''}>«</button>`;
-  pg+=`<button class="pb" onclick="txPage--;renderAllTx()" ${txPage===1?'disabled':''}>‹</button>`;
+  document.getElementById('tx-tb').innerHTML=sl.length?sl.map(txRow).join(''):`<tr class="er"><td colspan="6">No transactions found</tr>`;
+  let pg=`<span>${txs.length} records · Page ${txPage} of ${pages}</span><div class="pgb"><button class="pb" onclick="txPage=1;renderAllTx()" ${txPage===1?'disabled':''}>«</button><button class="pb" onclick="txPage--;renderAllTx()" ${txPage===1?'disabled':''}>‹</button>`;
   for(let p=Math.max(1,txPage-2);p<=Math.min(pages,txPage+2);p++)pg+=`<button class="pb${p===txPage?' on':''}" onclick="txPage=${p};renderAllTx()">${p}</button>`;
-  pg+=`<button class="pb" onclick="txPage++;renderAllTx()" ${txPage===pages?'disabled':''}>›</button>`;
-  pg+=`<button class="pb" onclick="txPage=${pages};renderAllTx()" ${txPage===pages?'disabled':''}>»</button></div>`;
+  pg+=`<button class="pb" onclick="txPage++;renderAllTx()" ${txPage===pages?'disabled':''}>›</button><button class="pb" onclick="txPage=${pages};renderAllTx()" ${txPage===pages?'disabled':''}>»</button></div>`;
   document.getElementById('tx-pg').innerHTML=pg;
 }
-
-/* ===== PROFILE ===== */
 function renderProfile(){
   const u=CU,txs=UD.transactions,inc=sI(txs),exp=sE(txs);
   const init=(u.firstName||u.username)[0].toUpperCase()+((u.lastName||'')[0]||'').toUpperCase();
-  document.getElementById('pcard').innerHTML=`
-    <div class="pav">${init}</div>
-    <div class="pname">${u.firstName?`${u.firstName} ${u.lastName}`.trim():u.username}</div>
-    <div class="pmeta">@${u.username} · Joined ${new Date(u.createdAt).toLocaleDateString(undefined,{month:'long',year:'numeric'})}</div>
-    <div class="prow"><span>Username</span><span>@${u.username}</span></div>
-    <div class="prow"><span>Currency</span><span>${u.currencySymbol} ${u.currencyCode} — ${u.currencyName}</span></div>
-    <div class="prow"><span>Total Transactions</span><span>${txs.length}</span></div>
-    <div class="prow"><span>All-time Income</span><span style="color:var(--emerald)">${fmtF(inc)}</span></div>
-    <div class="prow"><span>All-time Expense</span><span style="color:var(--crimson)">${fmtF(exp)}</span></div>
-    <div class="prow"><span>Net Balance</span><span style="color:${inc-exp>=0?'var(--emerald)':'var(--crimson)';font-size:'1.1rem'}">${fmtF(inc-exp)}</span></div>
-    <button class="bdanger" onclick="delAllData()">🗑 Delete All My Data</button>
-  `;
+  document.getElementById('pcard').innerHTML=`<div class="pav">${init}</div><div class="pname">${u.firstName?`${u.firstName} ${u.lastName}`.trim():u.username}</div><div class="pmeta">@${u.username} · Joined ${new Date(u.createdAt).toLocaleDateString(undefined,{month:'long',year:'numeric'})}</div><div class="prow"><span>Username</span><span>@${u.username}</span></div><div class="prow"><span>Currency</span><span>${u.currencySymbol} ${u.currencyCode} — ${u.currencyName}</span></div><div class="prow"><span>Total Transactions</span><span>${txs.length}</span></div><div class="prow"><span>All-time Income</span><span style="color:var(--emerald)">${fmtF(inc)}</span></div><div class="prow"><span>All-time Expense</span><span style="color:var(--crimson)">${fmtF(exp)}</span></div><div class="prow"><span>Net Balance</span><span style="color:${inc-exp>=0?'var(--emerald)':'var(--crimson)'};font-size:1.1rem">${fmtF(inc-exp)}</span></div><button class="bdanger" onclick="if(confirm('Delete ALL your transactions permanently?')){UD={transactions:[]};save();toast('All data deleted','red');renderProfile();}">🗑 Delete All My Data</button>`;
 }
-function delAllData(){if(!confirm('Delete ALL your transactions permanently?'))return;UD={transactions:[]};save();toast('All data deleted','red');renderProfile();}
-
-/* ===== TX MODAL ===== */
-function openAddModal(ds){
-  editId=null;curType='income';
-  document.getElementById('m-title').textContent='Add Transaction';
-  document.getElementById('m-sub').textContent='Save Transaction';
-  document.getElementById('m-d').value=ds||todayS();
-  document.getElementById('m-a').value='';document.getElementById('m-desc').value='';
-  document.getElementById('m-cat').value='Food';document.getElementById('m-n').value='';
-  setTTUI('income');
-  document.getElementById('tx-ov').classList.add('open');
-}
-function openEdit(id){
-  const tx=UD.transactions.find(t=>t.id===id);if(!tx)return;
-  editId=id;curType=tx.type;
-  document.getElementById('m-title').textContent='Edit Transaction';
-  document.getElementById('m-sub').textContent='Update Transaction';
-  document.getElementById('m-d').value=tx.date;document.getElementById('m-a').value=tx.amount;
-  document.getElementById('m-desc').value=tx.description;document.getElementById('m-cat').value=tx.category;
-  document.getElementById('m-n').value=tx.notes||'';
-  setTTUI(tx.type);
-  document.getElementById('tx-ov').classList.add('open');
-}
+function openAddModal(ds){editId=null;curType='income';document.getElementById('m-title').textContent='Add Transaction';document.getElementById('m-sub').textContent='Save Transaction';document.getElementById('m-d').value=ds||new Date().toISOString().split('T')[0];document.getElementById('m-a').value='';document.getElementById('m-desc').value='';document.getElementById('m-cat').value='Food';document.getElementById('m-n').value='';setTTUI('income');document.getElementById('tx-ov').classList.add('open');}
+function openEdit(id){const tx=UD.transactions.find(t=>t.id===id);if(!tx)return;editId=id;curType=tx.type;document.getElementById('m-title').textContent='Edit Transaction';document.getElementById('m-sub').textContent='Update Transaction';document.getElementById('m-d').value=tx.date;document.getElementById('m-a').value=tx.amount;document.getElementById('m-desc').value=tx.description;document.getElementById('m-cat').value=tx.category;document.getElementById('m-n').value=tx.notes||'';setTTUI(tx.type);document.getElementById('tx-ov').classList.add('open');}
 function cTxM(){document.getElementById('tx-ov').classList.remove('open');}
-function cTxOv(e){if(e.target===document.getElementById('tx-ov'))cTxM();}
 function setTT(t,btn){curType=t;document.querySelectorAll('#type-tt button').forEach(b=>b.classList.remove('active'));btn.classList.add('active');}
 function setTTUI(t){curType=t;const bs=document.querySelectorAll('#type-tt button');bs.forEach(b=>b.classList.remove('active'));bs[t==='income'?0:1].classList.add('active');}
 function submitTx(){
-  const d=document.getElementById('m-d').value,a=parseFloat(document.getElementById('m-a').value);
-  const desc=document.getElementById('m-desc').value.trim(),cat=document.getElementById('m-cat').value;
-  const notes=document.getElementById('m-n').value.trim();
+  const d=document.getElementById('m-d').value,a=parseFloat(document.getElementById('m-a').value),desc=document.getElementById('m-desc').value.trim(),cat=document.getElementById('m-cat').value,notes=document.getElementById('m-n').value.trim();
   if(!d){toast('Select a date','red');return;}if(!a||a<=0){toast('Enter a valid amount','red');return;}if(!desc){toast('Enter a description','red');return;}
-  if(editId!==null){
-    const idx=UD.transactions.findIndex(t=>t.id===editId);
-    UD.transactions[idx]={id:editId,date:d,type:curType,amount:a,description:desc,category:cat,notes};
-    toast('Updated ✓','green');
-  }else{
-    UD.transactions.push({id:nextId(),date:d,type:curType,amount:a,description:desc,category:cat,notes});
-    toast('Added ✓','green');
-  }
+  if(editId!==null){const idx=UD.transactions.findIndex(t=>t.id===editId);UD.transactions[idx]={id:editId,date:d,type:curType,amount:a,description:desc,category:cat,notes};toast('Updated ✓','green');}
+  else{UD.transactions.push({id:nextId(),date:d,type:curType,amount:a,description:desc,category:cat,notes});toast('Added ✓','green');}
   save();cTxM();refreshCur();
 }
 function delTx(id){if(!confirm('Delete this transaction?'))return;UD.transactions=UD.transactions.filter(t=>t.id!==id);save();toast('Deleted','red');refreshCur();}
-
-/* ===== KEYBOARD ===== */
-document.addEventListener('keydown',e=>{
-  if(e.key==='Escape'){cTxM();document.getElementById('day-ov').classList.remove('open');}
-  if(e.key==='Enter'&&document.getElementById('f-login').classList.contains('active')&&document.getElementById('auth-screen').style.display!=='none')doLogin();
-  if(e.key==='Enter'&&document.getElementById('tx-ov').classList.contains('open'))submitTx();
-});
-
-/* ===== INIT ===== */
-(function(){
-  updUC();
-  const sess=getSess();
-  if(sess){const u=getUsers()[sess.username];if(u&&u.uid===sess.uid){CU=u;UD=getUD(u.uid);SYM=u.currencySymbol;launchApp();return;}}
-  document.getElementById('auth-screen').style.display='flex';
-})();
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn[data-p]').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  document.querySelectorAll(`.nav-btn[data-p="${id}"]`).forEach(b=>b.classList.add('active'));
+  if(id==='dashboard') renderDash();
+  if(id==='monthly') renderCal();
+  if(id==='weekly') renderWeekly();
+  if(id==='yearly') renderYearly();
+  if(id==='transactions') renderAllTx();
+  if(id==='profile') renderProfile();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){cTxM();document.getElementById('day-ov').classList.remove('open');}});
+(function(){updUC();const sess=getSess();if(sess){const u=getUsers()[sess.username];if(u&&u.uid===sess.uid){CU=u;UD=getUD(u.uid);SYM=u.currencySymbol;launchApp();return;}}document.getElementById('auth-screen').style.display='flex';})();
 </script>
 </body>
 </html>
